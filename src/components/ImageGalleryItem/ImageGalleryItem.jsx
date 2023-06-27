@@ -37,5 +37,5 @@ ImageGalleryItem.propTypes = {
   url: PropTypes.string.isRequired,
   modalURL: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  propID: PropTypes.string.isRequired,
+  propID: PropTypes.number.isRequired,
 };

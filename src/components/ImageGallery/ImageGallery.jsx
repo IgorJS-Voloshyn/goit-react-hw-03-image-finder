@@ -5,12 +5,13 @@ export function ImageGallery({ matches }) {
   return (
     <ul className={css.imageGallery}>
       {matches.map(({ id, webformatURL, largeImageURL, tags }) => (
-        <ImageGalleryItem
-          alt={tags}
-          propID={id}
-          url={webformatURL}
-          modalURL={largeImageURL}
-        />
+        <li className={css.imageGalleryItem} key={id}>
+          <ImageGalleryItem
+            alt={tags}
+            url={webformatURL}
+            modalURL={largeImageURL}
+          />
+        </li>
       ))}
     </ul>
   );

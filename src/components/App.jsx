@@ -20,9 +20,9 @@ export class App extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     const { page, query, matches } = this.state;
+
     if (prevState.query !== query || prevState.page !== this.state.page)
       try {
-        this.setState({ query });
         this.setState({ loading: true });
         const { data } = await fetchPics(page, query);
 
@@ -30,10 +30,7 @@ export class App extends Component {
           return toast('Sorry, pictures not found');
         }
 
-        if (
-          (data.total > data.hits.length && data.total - page * 12 >= 0) ||
-          matches.length === 0
-        ) {
+        if (data.total > data.hits.length && data.total - page * 12 >= 0) {
           this.setState({ showBtn: true });
         }
 
@@ -50,7 +47,7 @@ export class App extends Component {
   }
 
   handleSubmitForm = data => {
-    this.setState({ query: data });
+    this.setState({ query: data, matches: [], page: 1, showBtn: false });
   };
 
   render() {
